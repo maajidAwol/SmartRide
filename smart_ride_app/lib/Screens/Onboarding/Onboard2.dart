@@ -42,7 +42,12 @@ class Onboard2 extends StatelessWidget {
                 ),
                 minimumSize: MaterialStateProperty.all(Size(350, 50)),
               ),
-              onPressed: () => {},
+              onPressed: () => {
+                Navigator.pushNamed(
+                  context,
+                  '/signup',
+                )
+              },
               child: Text(
                 "Get Started !",
                 style: TextStyle(color: Colors.white, 

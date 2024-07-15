@@ -41,9 +41,9 @@ class Onboard1 extends StatelessWidget {
                 minimumSize: MaterialStateProperty.all(Size(350, 50)),
               ),
               onPressed: () => {
-                Navigator.push(
+                Navigator.pushNamed(
                   context,
-                  MaterialPageRoute(builder:(context) => const Onboard2(),)
+                  '/onboard2',
                 )
               },
               child: Text(
@@ -63,7 +63,9 @@ class Onboard1 extends StatelessWidget {
                         fontWeight: FontWeight.bold)
                 ),
                 TextButton(
-                  onPressed: () => {},
+                  onPressed: () => {
+                    Navigator.pushNamed(context, '/signin'),
+                  },
                   child: Text(
                     "Sign In",
                     style: TextStyle(
