@@ -1,3 +1,4 @@
+import 'package:driver_side/Screens/main_page.dart';
 import 'package:flutter/material.dart';
 
 class cardetail extends StatelessWidget {
@@ -5,8 +6,19 @@ class cardetail extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Text('kl'));
     return Scaffold(
+       appBar: AppBar(
+          leading: IconButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => MainScreen()),
+              );
+            },
+            icon: Icon(Icons.arrow_back_ios_new_sharp),
+          ),
+          title: Text('Your Car'),
+        ),
       body: ListView(children: [
         Container(
           decoration: BoxDecoration(
@@ -18,43 +30,7 @@ class cardetail extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Container(
-                  margin: EdgeInsets.fromLTRB(17.4, 17, 17.4, 17),
-                  child: Align(
-                    alignment: Alignment.topLeft,
-                    child: SizedBox(
-                      width: 200.2,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Container(
-                            margin: EdgeInsets.fromLTRB(0, 4, 0, 4.9),
-                            width: 24,
-                            height: 24,
-                            child: SizedBox(
-                              width: 8.1,
-                              height: 14.1,
-                              child: Image.asset(
-                                'assets/icons/left arrow.png',
-                              ),
-                            ),
-                          ),
-                          Text(
-                            'Your Car',
-                            style: TextStyle(
-                              fontWeight: FontWeight.w600,
-                              fontSize: 20,
-                              height: 1.6,
-                              letterSpacing: -0.2,
-                              color: Color(0xFF131313),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
+                
                 Container(
                   margin: EdgeInsets.fromLTRB(0, 0, 0, 66),
                   child: Column(
@@ -505,6 +481,43 @@ class cardetail extends StatelessWidget {
           ),
         ),
       ]),
+       bottomNavigationBar: Padding(
+          padding: EdgeInsets.only(top: 10),
+          child: Container(
+              height: 70,
+              decoration: BoxDecoration(
+                color: Color(0xFF98A2B3),
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(16),
+                  topRight: Radius.circular(16),
+                ),
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Container(
+                    margin: EdgeInsets.fromLTRB(0, 4.4, 0, 4.5),
+                    width: 24,
+                    height: 24,
+                    child: Image.asset(
+                      'assets/icons/home 2.png',
+                      width: 8.1,
+                      height: 14.1,
+                    ),
+                  ),
+                  Container(
+                    margin: EdgeInsets.fromLTRB(0, 4.4, 0, 4.5),
+                    width: 24,
+                    height: 24,
+                    child: Image.asset(
+                      'assets/icons/person.png',
+                      width: 8.1,
+                      height: 14.1,
+                    ),
+                  ),
+                ],
+              )),
+        )
     );
   }
 }

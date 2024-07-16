@@ -1,4 +1,5 @@
 import 'package:driver_side/Screens/main_page.dart';
+import 'package:driver_side/Screens/profile.dart';
 import 'package:flutter/material.dart';
 
 void main() {

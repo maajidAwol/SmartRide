@@ -1,4 +1,5 @@
 import 'package:driver_side/Screens/car_detail.dart';
+import 'package:driver_side/util/Statistics.dart';
 import 'package:driver_side/util/cards.dart';
 import 'package:driver_side/util/ordercard.dart';
 import 'package:flutter/material.dart';
@@ -15,7 +16,7 @@ class _MainScreenState extends State<MainScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: ListView(children: [
-        Padding(padding: EdgeInsets.fromLTRB(12, 10, 12, 4), child: AppBar()),
+        Padding(padding: EdgeInsets.fromLTRB(12, 10, 12, 4), child: Appbar()),
         Padding(
           padding: EdgeInsets.fromLTRB(12, 10, 12, 4),
           child: Row(
@@ -132,14 +133,52 @@ class _MainScreenState extends State<MainScreen> {
           ),
         ),
         Padding(padding: EdgeInsets.fromLTRB(8, 10, 8, 4), child: Myorders()),
-        Padding(padding: EdgeInsets.fromLTRB(12, 10, 12, 4), child: Statistics()),
+        Padding(
+            padding: EdgeInsets.fromLTRB(12, 10, 12, 4), child: Statistics()),
       ]),
+       bottomNavigationBar: Padding(
+          padding: EdgeInsets.only(top: 10),
+          child: Container(
+              height: 70,
+              decoration: BoxDecoration(
+                color: Color(0xFF98A2B3),
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(16),
+                  topRight: Radius.circular(16),
+                ),
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Container(
+                    margin: EdgeInsets.fromLTRB(0, 4.4, 0, 4.5),
+                    width: 24,
+                    height: 24,
+                    child: Image.asset(
+                      'assets/icons/home 2.png',
+                      width: 8.1,
+                      height: 14.1,
+                    ),
+                  ),
+                  Container(
+                    margin: EdgeInsets.fromLTRB(0, 4.4, 0, 4.5),
+                    width: 24,
+                    height: 24,
+                    child: Image.asset(
+                      'assets/icons/person.png',
+                      width: 8.1,
+                      height: 14.1,
+                    ),
+                  ),
+                ],
+              )),
+        )
     );
   }
 }
 
-class AppBar extends StatelessWidget {
-  const AppBar({Key? key}) : super(key: key);
+class Appbar extends StatelessWidget {
+  const Appbar({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -315,378 +354,3 @@ class Myorders extends StatelessWidget {
   }
 }
 
-class Statistics extends StatelessWidget {
-  const Statistics({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Positioned(
-      left: 0,
-      right: 0,
-      bottom: -341,
-      child: SizedBox(
-        width: 335,
-        height: 400,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Container(
-              margin: EdgeInsets.fromLTRB(0, 0, 0, 10),
-              child: Align(
-                alignment: Alignment.topLeft,
-                child: Container(
-                  child: Text(
-                    'Statistics',
-                    style: TextStyle(
-                      fontWeight: FontWeight.w600,
-                      fontSize: 20,
-                      height: 1.6,
-                      letterSpacing: -0.2,
-                      color: Color(0xFF131313),
-                    ),
-                  ),
-                ),
-              ),
-            ),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              
-              children: [
-
-                Container(
-                  margin: EdgeInsets.fromLTRB(20, 0, 0, 20),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Container(
-                        margin: EdgeInsets.fromLTRB(0, 0, 20, 0),
-                        decoration: BoxDecoration(
-                          border: Border.all(color: Color(0x1A131313)),
-                          borderRadius: BorderRadius.circular(20),
-                          color: Color(0xFFFFFFFF),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Color(0x0A000000),
-                              offset: Offset(2, 3),
-                              blurRadius: 10,
-                            ),
-                          ],
-                        ),
-                        child: SizedBox(
-                          width: 158,
-                          child: Container(
-                            padding: EdgeInsets.fromLTRB(20, 23, 0, 18),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Container(
-                                  margin: EdgeInsets.fromLTRB(0, 0, 0, 8),
-                                  child: Align(
-                                    alignment: Alignment.topLeft,
-                                    child: Container(
-                                      width: 32,
-                                      height: 32,
-                                      child: SizedBox(
-                                        width: 30,
-                                        height: 22.6,
-                                        child: Image.asset(
-                                          'assets/icons/people.png',
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                                Align(
-                                  alignment: Alignment.topLeft,
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Align(
-                                        alignment: Alignment.topLeft,
-                                        child: Text(
-                                          '20',
-                                          style: TextStyle(
-                                            fontWeight: FontWeight.w600,
-                                            fontSize: 24,
-                                            height: 1.4,
-                                            letterSpacing: -0.2,
-                                            color: Color(0xFF131313),
-                                          ),
-                                        ),
-                                      ),
-                                      Opacity(
-                                        opacity: 0.5,
-                                        child: Text(
-                                          'Total Customers',
-                                          style: TextStyle(
-                                            fontWeight: FontWeight.w400,
-                                            fontSize: 12,
-                                            height: 1.5,
-                                            color: Color(0xFF1D1F20),
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ),
-                      Container(
-                        decoration: BoxDecoration(
-                          border: Border.all(color: Color(0x1A131313)),
-                          borderRadius: BorderRadius.circular(20),
-                          color: Color(0xFFFFFFFF),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Color(0x0A000000),
-                              offset: Offset(2, 3),
-                              blurRadius: 10,
-                            ),
-                          ],
-                        ),
-                        child: SizedBox(
-                          width: 157,
-                          child: Container(
-                            padding: EdgeInsets.fromLTRB(20, 18, 0, 18),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Container(
-                                  margin: EdgeInsets.fromLTRB(0, 0, 0, 8),
-                                  child: Align(
-                                    alignment: Alignment.topLeft,
-                                    child: SizedBox(
-                                      width: 32,
-                                      height: 32,
-                                      child: Image.asset(
-                                        'assets/icons/car 1.png',
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                                Align(
-                                  alignment: Alignment.topLeft,
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Align(
-                                        alignment: Alignment.topLeft,
-                                        child: Text(
-                                          '27',
-                                          style: TextStyle(
-                                            fontWeight: FontWeight.w600,
-                                            fontSize: 24,
-                                            height: 1.4,
-                                            letterSpacing: -0.2,
-                                            color: Color(0xFF131313),
-                                          ),
-                                        ),
-                                      ),
-                                      Opacity(
-                                        opacity: 0.5,
-                                        child: Text(
-                                          'Total Orders',
-                                          style: TextStyle(
-                                            fontWeight: FontWeight.w400,
-                                            fontSize: 12,
-                                            height: 1.5,
-                                            color: Color(0xFF1D1F20),
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-
-                Container (
-                  margin: EdgeInsets.fromLTRB(20, 0, 0, 20),
-                  child:Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Container(
-                      margin: EdgeInsets.fromLTRB(0, 0, 20, 0),
-                      decoration: BoxDecoration(
-                        border: Border.all(color: Color(0x1A131313)),
-                        borderRadius: BorderRadius.circular(20),
-                        color: Color(0xFFFFFFFF),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Color(0x0A000000),
-                            offset: Offset(2, 3),
-                            blurRadius: 10,
-                          ),
-                        ],
-                      ),
-                      child: SizedBox(
-                        width: 158,
-                        child: Container(
-                          padding: EdgeInsets.fromLTRB(20, 18, 0, 18),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Container(
-                                margin: EdgeInsets.fromLTRB(0, 0, 0, 8),
-                                child: Align(
-                                  alignment: Alignment.topLeft,
-                                  child: Container(
-                                    width: 32,
-                                    height: 32,
-                                    child: SizedBox(
-                                      width: 32,
-                                      height: 32,
-                                      child: Image.asset(
-                                        'assets/icons/income.png',
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              Align(
-                                alignment: Alignment.topLeft,
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    Text(
-                                      '\$2,000',
-                                      style: TextStyle(
-                                        fontWeight: FontWeight.w600,
-                                        fontSize: 24,
-                                        height: 1.4,
-                                        letterSpacing: -0.2,
-                                        color: Color(0xFF131313),
-                                      ),
-                                    ),
-                                    Container(
-                                      margin: EdgeInsets.fromLTRB(0, 0, 11, 0),
-                                      child: Opacity(
-                                        opacity: 0.5,
-                                        child: Text(
-                                          'Total Income',
-                                          style: TextStyle(
-                                            fontWeight: FontWeight.w400,
-                                            fontSize: 12,
-                                            height: 1.5,
-                                            color: Color(0xFF1D1F20),
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                    Container(
-                      decoration: BoxDecoration(
-                        border: Border.all(color: Color(0x1A131313)),
-                        borderRadius: BorderRadius.circular(20),
-                        color: Color(0xFFFFFFFF),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Color(0x0A000000),
-                            offset: Offset(2, 3),
-                            blurRadius: 10,
-                          ),
-                        ],
-                      ),
-                      child: SizedBox(
-                        width: 157,
-                        child: Container(
-                          padding: EdgeInsets.fromLTRB(20, 18, 0, 18),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Container(
-                                margin: EdgeInsets.fromLTRB(0, 0, 0, 8),
-                                child: Align(
-                                  alignment: Alignment.topLeft,
-                                  child: Container(
-                                    width: 32,
-                                    height: 32,
-                                    child: SizedBox(
-                                      width: 32,
-                                      height: 32,
-                                      child: Image.asset(
-                                        'assets/icons/expense.png',
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              Align(
-                                alignment: Alignment.topLeft,
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    Container(
-                                      margin:
-                                          EdgeInsets.fromLTRB(0, 0, 18.6, 0),
-                                      child: Text(
-                                        '\$425',
-                                        style: TextStyle(
-                                          fontWeight: FontWeight.w600,
-                                          fontSize: 24,
-                                          height: 1.4,
-                                          letterSpacing: -0.2,
-                                          color: Color(0xFF131313),
-                                        ),
-                                      ),
-                                    ),
-                                    Opacity(
-                                      opacity: 0.5,
-                                      child: Text(
-                                        'Total Expense',
-                                        style: TextStyle(
-                                          fontWeight: FontWeight.w400,
-                                          fontSize: 12,
-                                          height: 1.5,
-                                          color: Color(0xFF1D1F20),
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),),
-              ],
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
