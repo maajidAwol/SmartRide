@@ -9,6 +9,8 @@ class SignIn extends StatefulWidget {
 
 class _SignInState extends State<SignIn> {
   bool? rememberMe = true;
+   final TextEditingController _emailcontroller = TextEditingController(text: 'Maajidawol@gmail.com');
+  final TextEditingController _passwordcontroller = TextEditingController(text: 'kuoo1234');
 
   
   @override
@@ -27,6 +29,7 @@ class _SignInState extends State<SignIn> {
               height: 15,
             ),
             TextField(
+              controller: _emailcontroller,
               decoration: InputDecoration(
                 hintText: 'Enter Your Email',
                 border: OutlineInputBorder(
@@ -42,6 +45,7 @@ class _SignInState extends State<SignIn> {
               height: 20,
             ),
             TextField(
+              controller: _passwordcontroller,
               decoration: InputDecoration(
                 hintText: 'Password',
                 border: OutlineInputBorder(

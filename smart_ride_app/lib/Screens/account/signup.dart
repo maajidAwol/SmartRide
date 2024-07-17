@@ -9,6 +9,9 @@ class SignUp extends StatefulWidget {
 
 class _SignUpState extends State<SignUp> {
   bool? rememberMe = true;
+  final TextEditingController _namecontroller = TextEditingController(text: 'Maajid');
+  final TextEditingController _emailcontroller = TextEditingController(text: 'Maajidawol@gmail.com');
+  final TextEditingController _passwordcontroller = TextEditingController(text: 'kuoo1234');
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,7 +29,9 @@ class _SignUpState extends State<SignUp> {
               height: 10,
             ),
             TextField(
+              controller: _namecontroller,
               decoration: InputDecoration(
+                
                 hintText: 'Name',
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(18),
@@ -41,6 +46,7 @@ class _SignUpState extends State<SignUp> {
             SizedBox(height:20)
             ,
             TextField(
+              controller: _emailcontroller,
               decoration: InputDecoration(
                 hintText: 'Enter Your Email',
                 border: OutlineInputBorder(
@@ -56,6 +62,7 @@ class _SignUpState extends State<SignUp> {
               height: 20,
             ),
             TextField(
+              controller: _passwordcontroller,
               decoration: InputDecoration(
                 hintText: 'Password',
                 border: OutlineInputBorder(

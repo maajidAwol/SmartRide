@@ -20,6 +20,34 @@ class _HomeState extends State<Home> {
 
     // Add more items as needed
   ];
+  final List<Map<String, dynamic>> carData = [
+  {
+    'name': 'Public Bus',
+    'imageUrl': 'assets/images/cars/public.jpg',
+    'rating': 4.7,
+    'date': '2 July',
+    'numberOfSeats': 60,
+    'price': 2.0,
+  },
+  {
+    'name': 'School Bus',
+    'imageUrl': 'assets/images/cars/school.jpg',
+    'rating': 4.9,
+    'date': '15 August',
+    'numberOfSeats': 40,
+    'price': 5.0,
+  },
+  {
+    'name': 'Mini Bus',
+    'imageUrl': 'assets/images/cars/minibus.jpg',
+    'rating': 4.8,
+    'date': '20 July',
+    'numberOfSeats': 12,
+    'price': 8.0,
+  },
+  
+];
+
 
   @override
   Widget build(BuildContext context) {
@@ -65,7 +93,7 @@ class _HomeState extends State<Home> {
                 children: [
                   CircleAvatar(
                     radius: 24,
-                    backgroundImage: AssetImage('assets/images/avatar.png'),
+                    // backgroundImage: AssetImage('assets/images/avatar.png'),
                   ),
                   SizedBox(
                     width: 10,
@@ -82,7 +110,7 @@ class _HomeState extends State<Home> {
                         ),
                       ),
                       Text(
-                        "Abd",
+                        "maajid",
                         style: TextStyle(
                           fontSize: 12,
                           color: Color.fromARGB(255, 26, 25, 27),
@@ -216,7 +244,7 @@ class _HomeState extends State<Home> {
                     child: ListView.separated(
                       padding: EdgeInsets.all(5),
                       scrollDirection: Axis.horizontal,
-                      itemCount: 5,
+                      itemCount: carData.length,
                       itemBuilder: (context, index) {
   return InkWell(
     onTap: () {
@@ -225,7 +253,7 @@ class _HomeState extends State<Home> {
         '/cardetail', 
       );
     },
-    child: CarCard(),
+    child: CarCard(name: carData[index]["name"]!,imageUrl: carData[index]["imageUrl"]!,rating:4.7,date: carData[index]["date"]!,numberOfSeats: carData[index]["numberOfSeats"]!,price: carData[index]["price"]!,),
   );
 },
                       separatorBuilder: (context, index) => SizedBox(width: 10),
@@ -255,15 +283,13 @@ class _HomeState extends State<Home> {
 
                   Column(
                     children: [
-                      CarDetails(),
+
+                      CarDetails(name:carData[2]["name"],imageUrl:carData[2]["imageUrl"],price:carData[2]["price"],rating:carData[2]["rating"],date:carData[2]["date"] ),
                       SizedBox(height: 10),
-                      CarDetails(),
+                      CarDetails(name:carData[1]["name"],imageUrl:carData[1]["imageUrl"],price:carData[1]["price"],rating:carData[1]["rating"],date:carData[1]["date"] ),
                       SizedBox(height: 10),
-                      CarDetails(),
-                      SizedBox(height: 10),
-                      CarDetails(),
-                      SizedBox(height: 10),
-                      CarDetails(),
+                      CarDetails(name:carData[0]["name"],imageUrl:carData[0]["imageUrl"],price:carData[0]["price"],rating:carData[0]["rating"],date:carData[0]["date"] ),
+                      
                     ],
                   ),
 
@@ -303,6 +329,23 @@ class IconWithText extends StatelessWidget {
 }
 
 class CarCard extends StatefulWidget {
+  final String imageUrl ;
+  final String name ;
+  final double rating;
+  final String date;
+  final int numberOfSeats;
+  final double price;
+
+  const CarCard({
+    Key? key,
+    required this.imageUrl,
+    required this.name,
+   required  this.rating,
+    required this.date,
+    required this.numberOfSeats,
+    required this.price,
+  }) : super(key: key);
+
   @override
   _CarCardState createState() => _CarCardState();
 }
@@ -338,7 +381,7 @@ class _CarCardState extends State<CarCard> {
               children: [
                 ClipRRect(
                   child: Image.asset(
-                    'assets/images/cars/car1.png',
+                    widget.imageUrl,
                     height: 120,
                     width: double.infinity,
                     fit: BoxFit.cover,
@@ -369,7 +412,7 @@ class _CarCardState extends State<CarCard> {
                   Row(
                     children: [
                       Text(
-                        'Car Name',
+                        widget.name,
                         style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
@@ -390,7 +433,7 @@ class _CarCardState extends State<CarCard> {
                   ),
                   // SizedBox(height: 4),
                   Text(
-                    'Available from 2',
+                    'Available from ${widget.date}',
                     style: TextStyle(
                       fontSize: 14,
                       color: Colors.grey,
@@ -400,8 +443,8 @@ class _CarCardState extends State<CarCard> {
                   Row(
                     children: [
                       Icon(Icons.car_rental),
-                      Text(
-                        'Seats',
+                      Text(' ${widget.numberOfSeats} Seats',
+                        
                         style: TextStyle(
                           fontSize: 14,
                         ),
@@ -412,7 +455,7 @@ class _CarCardState extends State<CarCard> {
                         size: 14,
                       ),
                       Text(
-                        '\$28/hour',
+                        '\$${widget.price}/hour',
                         style: TextStyle(
                           fontSize: 14,
                         ),
@@ -429,7 +472,25 @@ class _CarCardState extends State<CarCard> {
   }
 }
 
+
+
+
+
 class CarDetails extends StatefulWidget {
+  final String imageUrl ;
+  final String name ;
+  final double rating;
+  final String date;
+  final double price;
+
+  const CarDetails({
+    Key? key,
+    required this.imageUrl,
+    required this.name,
+   required  this.rating,
+    required this.date,
+    required this.price,
+  }) : super(key: key);
   @override
   _CarDetails createState() => _CarDetails();
 }
@@ -465,7 +526,7 @@ class _CarDetails extends State<CarDetails> {
               children: [
                 ClipRRect(
                   child: Image.asset(
-                    'assets/images/cars/car2.png',
+                    widget.imageUrl,
                     height: 170,
                     width: double.infinity,
                     fit: BoxFit.cover,
@@ -496,7 +557,7 @@ class _CarDetails extends State<CarDetails> {
                   Row(
                     children: [
                       Text(
-                        'BMW',
+                        widget.name,
                         style: TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
@@ -507,20 +568,11 @@ class _CarDetails extends State<CarDetails> {
                         Icons.monetization_on,
                         size: 20,
                       ),
-                      Text('\$28/hour',
+                      Text('\$${widget.price}/hour',
                           style: TextStyle(
                             fontSize: 18,
                           )),
-                      Icon(
-                        Icons.star,
-                        size: 20,
-                      ),
-                      Text(
-                        '5.0',
-                        style: TextStyle(
-                          fontSize: 16,
-                        ),
-                      ),
+                      
                     ],
                   ),
                   // SizedBox(height: 4),
@@ -531,7 +583,7 @@ class _CarDetails extends State<CarDetails> {
                         size: 15,
                       ),
                       Text(
-                        '5.0',
+                        ' ${widget.rating}',
                         style: TextStyle(
                           fontSize: 12,
                         ),
@@ -547,7 +599,7 @@ class _CarDetails extends State<CarDetails> {
                   Row(
                     children: [
                       Text(
-                        'Available from 2',
+                        'Available from ${widget.date}',
                         style: TextStyle(
                           fontSize: 14,
                         ),
